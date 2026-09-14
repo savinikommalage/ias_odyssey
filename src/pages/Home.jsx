@@ -35,7 +35,7 @@ export default function Home() {
           </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <StickerButton as="a" href="https://odyssey-web-main.vercel.app/login.html">
+            <StickerButton as={Link} to="/register">
               Register Now <Send size={18} />
             </StickerButton>
             <Link

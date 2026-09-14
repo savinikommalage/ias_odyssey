@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { uploadIdProof, submitRegistration } from '../lib/supabaseClient';
-import { CheckCircle2, Loader2, AlertCircle, ArrowLeft, Sparkles, ExternalLink } from 'lucide-react';
+import { CheckCircle2, Loader2, AlertCircle, ArrowLeft, Sparkles, ExternalLink, Users, ShieldCheck, Send } from 'lucide-react';
 
 export default function Register() {
   // Form fields state matching the screenshot & Supabase backend
@@ -94,7 +94,7 @@ export default function Register() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-transparent py-12 px-4 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent py-12 px-4 flex items-center justify-center font-hand">
         <div className="w-full max-w-[700px] bg-[#fff6a4] border-2 border-black p-8 sm:p-10 shadow-[8px_8px_0_#222] relative rounded-sm">
           {/* Top Tape */}
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-8 bg-gray-300/70 transform -rotate-1 shadow-sm border border-gray-400/30" />
@@ -185,9 +185,115 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 flex items-center justify-center font-hand">
-      {/* Journal Outer Container */}
-      <div className="w-full max-w-[700px] bg-[#fff6a4] border-2 border-black p-6 sm:p-10 shadow-[8px_8px_0_#222] relative rounded-sm">
+    <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 flex flex-col items-center justify-start font-hand max-w-4xl mx-auto">
+      
+      {/* ===== CONVERSION ZONE HEADER & CARDS ===== */}
+      <div className="w-full mb-12">
+        {/* Badge */}
+        <div className="inline-block mb-3">
+          <span className="font-hand font-extrabold text-xs sm:text-sm tracking-wider uppercase px-3 py-1 border-2 border-black bg-[#fff8b9] text-[#3a5802] rounded-xs shadow-[2px_2px_0_#000] rotate-[-1.5deg] inline-block">
+            THE CONVERSION ZONE
+          </span>
+        </div>
+
+        {/* Main Title */}
+        <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl text-ink tracking-tight">
+          Register for Odyssey
+        </h1>
+
+        {/* Subtitle */}
+        <p className="font-hand text-xl sm:text-2xl text-ink/90 italic leading-relaxed max-w-3xl mt-2 mb-8">
+          Stake your claim on the map. Bring your squad along for extra points on the leaderboard and unlock exclusive alliance perks.
+        </p>
+
+        {/* Main Expedition Portal Card */}
+        <div className="bg-[#fffdf0] border-2 border-black rounded-2xl p-6 sm:p-8 shadow-[8px_8px_0_#1a1a1a] relative overflow-hidden">
+          {/* Top-Right Tape Artwork */}
+          <div className="absolute -top-1 right-10 w-24 h-7 bg-gray-300/70 transform rotate-6 shadow-sm border-l border-r border-gray-400/30 pointer-events-none" />
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            {/* Left Column */}
+            <div className="md:col-span-7 flex flex-col items-start">
+              <span className="bg-[#e2f0d9] border-2 border-[#558203] text-[#426602] font-hand font-bold text-xs sm:text-sm tracking-wider uppercase px-3 py-1 rounded-md inline-flex items-center gap-1.5 mb-4 shadow-[2px_2px_0_#558203]">
+                <Sparkles size={14} className="text-[#558203]" /> OFFICIAL PORTAL
+              </span>
+
+              <h2 className="font-heading font-black text-3xl sm:text-4xl text-ink leading-tight mb-3">
+                Ready to Join the Expedition?
+              </h2>
+
+              <p className="font-hand text-lg sm:text-xl text-ink/80 italic leading-relaxed mb-6">
+                Sign up through our official portal to access your digital badge, draft alliances, and track your referral points in real-time.
+              </p>
+
+              <button
+                onClick={() => {
+                  const el = document.getElementById('register-form');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-[#558203] text-white font-heading font-black text-lg sm:text-xl px-7 py-3 border-2 border-black shadow-[4px_4px_0_#000] hover:bg-[#466c02] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all uppercase tracking-wider inline-flex items-center gap-3 rounded-md cursor-pointer"
+              >
+                Register Now <Send size={20} className="rotate-45" />
+              </button>
+            </div>
+
+            {/* Right Column: What's Included Box */}
+            <div className="md:col-span-5">
+              <div className="bg-[#fff9c4]/70 border-2 border-dashed border-[#c6b653] p-5 sm:p-6 rounded-xl space-y-4 shadow-sm">
+                <h3 className="font-heading font-bold text-xl text-ink">
+                  What's Included:
+                </h3>
+
+                <div className="space-y-3 font-hand text-base sm:text-lg text-ink/90 italic">
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={20} className="text-[#558203] shrink-0 mt-0.5" />
+                    <span>Full access to keynote &amp; workshop tracks</span>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <Users size={20} className="text-[#558203] shrink-0 mt-0.5" />
+                    <span>Squad referral draft &amp; alliance points</span>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <ShieldCheck size={20} className="text-[#558203] shrink-0 mt-0.5" />
+                    <span>Fast-track check-in for IEEE IAS members</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dotted Divider */}
+        <div className="border-b-2 border-dashed border-gray-400/60 my-10" />
+
+        {/* Bottom 2 Info Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Bring a Squad Card */}
+          <div className="bg-[#fffdf0] border-2 border-black p-6 rounded-xl shadow-[6px_6px_0_#000] relative">
+            <div className="flex items-center gap-2 font-heading font-bold text-xl sm:text-2xl text-ink mb-2">
+              <Users size={22} className="text-[#558203]" />
+              <span>Bring a Squad</span>
+            </div>
+            <p className="font-hand text-base sm:text-lg text-ink/80 italic leading-relaxed">
+              Form alliances with classmates and earn leaderboard bonus multipliers when registering with your squad code.
+            </p>
+          </div>
+
+          {/* Early Bird Flex Card */}
+          <div className="bg-[#fffdf0] border-2 border-black p-6 rounded-xl shadow-[6px_6px_0_#000] relative">
+            <div className="flex items-center gap-2 font-heading font-bold text-xl sm:text-2xl text-ink mb-2">
+              <Sparkles size={22} className="text-[#558203]" />
+              <span>Early Bird Flex</span>
+            </div>
+            <p className="font-hand text-base sm:text-lg text-ink/80 italic leading-relaxed">
+              Early registrants receive exclusive Odyssey stickers, physical survival guide kits, and guaranteed ration packs.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ===== REGISTRATION FORM JOURNAL CARD ===== */}
+      <div id="register-form" className="w-full max-w-[700px] bg-[#fff6a4] border-2 border-black p-6 sm:p-10 shadow-[8px_8px_0_#222] relative rounded-sm">
         
         {/* Top Status Pill Bar */}
         <div className="mb-6 flex justify-start">
