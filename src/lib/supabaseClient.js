@@ -10,7 +10,9 @@ export const supabase =
 
 /**
  * Uploads an ID proof file to Supabase Storage bucket ('id-proofs').
- * Returns the public URL of the uploaded file, or null if upload failed/offline.
+ * Returns the storage file path (e.g. 'proofs/123456_abc.jpg'), or null if
+ * upload failed/offline. The bucket is PRIVATE — admins can view files via
+ * the Supabase Dashboard Storage browser.
  */
 export async function uploadIdProof(file) {
   if (!supabase || !file) return null;
@@ -29,11 +31,9 @@ export async function uploadIdProof(file) {
       return null;
     }
 
-    const { data: publicUrlData } = supabase.storage
-      .from('id-proofs')
-      .getPublicUrl(filePath);
-
-    return publicUrlData?.publicUrl || null;
+    // Return the storage path — NOT a public URL.
+    // The bucket is private; admins access files via Supabase Dashboard.
+    return filePath;
   } catch (err) {
     console.error('Error uploading file:', err);
     return null;
@@ -42,19 +42,19 @@ export async function uploadIdProof(file) {
 
 /**
  * Inserts registration record into 'registrations' Supabase table.
+ * Does NOT select/return the inserted row (RLS blocks public SELECT).
  */
 export async function submitRegistration(registrationData) {
   if (!supabase) {
     // Local fallback when Supabase is not configured yet
     console.warn('Supabase client is not configured. Simulating registration locally.');
-    return { data: [{ id: 'mock-id-' + Date.now(), ...registrationData }], error: null };
+    return { success: true, error: null };
   }
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('registrations')
-    .insert([registrationData])
-    .select();
+    .insert([registrationData]);
 
-  return { data, error };
+  return { success: !error, error };
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { uploadIdProof, submitRegistration } from '../lib/supabaseClient';
 import { CheckCircle2, Loader2, AlertCircle, ArrowLeft, Sparkles, ExternalLink, Users, ShieldCheck, Send } from 'lucide-react';
+import whatsappQr from '../assets/pic/qrcode_chat.whatsapp.com.png';
 
 export default function Register() {
   // Form fields state matching the screenshot & Supabase backend
@@ -24,7 +25,7 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [submittedData, setSubmittedData] = useState(null);
+
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -75,13 +76,12 @@ export default function Register() {
       };
 
       // 3. Submit to Supabase
-      const { data, error } = await submitRegistration(payload);
+      const { success, error } = await submitRegistration(payload);
 
-      if (error) {
+      if (error || !success) {
         console.error('Registration failed:', error);
-        setErrorMsg(error.message || 'Failed to submit registration. Please try again.');
+        setErrorMsg(error?.message || 'Failed to submit registration. Please try again.');
       } else {
-        setSubmittedData(data ? data[0] : payload);
         setSubmitted(true);
       }
     } catch (err) {
@@ -111,17 +111,16 @@ export default function Register() {
               YOU'RE REGISTERED!
             </p>
 
-            <div className="mt-6 bg-[#fff8b9] p-6 border-2 border-dashed border-ink text-left font-hand text-xl text-ink space-y-2">
-              <p><strong>Email:</strong> {submittedData?.email || email}</p>
-              {fullName && <p><strong>Name:</strong> {fullName}</p>}
-              {sliitId && <p><strong>SLIIT ID:</strong> {sliitId}</p>}
-              <p><strong>Membership Type:</strong> {submittedData?.membership || membership}</p>
-              {(submittedData?.ieee_id || ieeeId) && (
-                <p><strong>IEEE Membership ID:</strong> {submittedData?.ieee_id || ieeeId}</p>
-              )}
-              {submittedData?.id_proof_url && (
-                <p className="text-base text-[#558203] font-bold">✓ Photo ID Verified &amp; Uploaded to Supabase</p>
-              )}
+            <div className="mt-6 bg-[#fff8b9] p-6 border-2 border-dashed border-ink text-center font-hand text-ink">
+              <p className="text-xl font-extrabold mb-3">Join the Odyssey WhatsApp Group</p>
+              <p className="text-base italic text-ink/80 mb-4">Scan the QR code below to stay updated with event details, squad updates, and more!</p>
+              <div className="inline-block bg-white p-3 border-2 border-black rounded-lg shadow-[4px_4px_0_#222]">
+                <img
+                  src={whatsappQr}
+                  alt="Odyssey WhatsApp Group QR Code"
+                  className="w-48 h-48 sm:w-56 sm:h-56 object-contain"
+                />
+              </div>
             </div>
 
             {/* Special IAS Membership Upgrade Banner for IEEE Member choice */}

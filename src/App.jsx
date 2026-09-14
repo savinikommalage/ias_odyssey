@@ -7,6 +7,9 @@ import About from './pages/About.jsx';
 import BecomeMember from './pages/BecomeMember.jsx';
 import Register from './pages/Register.jsx';
 import Games from './pages/Games.jsx';
+import Contact from './pages/Contact.jsx';
+
+import Footer from './components/Footer.jsx';
 
 export default function App() {
 
@@ -21,12 +24,11 @@ export default function App() {
           <Route path="/membership" element={<BecomeMember />} />
           <Route path="/register" element={<Register />} />
           <Route path="/games" element={<Games />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </main>
-      <footer className="text-center font-hand text-ink/60 pb-8 pt-6">
-        Odyssey · IEEE IAS Student Branch
-      </footer>
+      <Footer />
     </div>
   );
 }

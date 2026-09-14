@@ -3,12 +3,18 @@ import { MapPin, Clock, User } from 'lucide-react';
 import { SectionTab, Polaroid, DashedDivider } from '../components/UI.jsx';
 
 const schedule = [
-  { time: '09:00', title: 'Basecamp Check-In', desc: 'Registration, badges, and squad grouping.' },
-  { time: '10:00', title: 'Opening Briefing', desc: 'Welcome address and the rules of the UN Alliance game.' },
-  { time: '11:00', title: 'Keynote: Field Notes on Industry Applications', desc: 'Guest speaker session.' },
-  { time: '13:00', title: 'Ration Break', desc: 'Lunch and networking.' },
-  { time: '14:00', title: 'Workshop Trail', desc: 'Parallel technical workshops — pick your route.' },
-  { time: '16:30', title: 'Alliance Draft Finale', desc: 'Live leaderboard reveal and prize drop.' },
+  { time: '10:00 - 10:35 AM', title: 'Welcome & Icebreaker', desc: 'Welcome address and opening icebreaker activity.' },
+  { time: '10:35 - 11:05 AM', title: 'Guest Speaker Session', desc: 'Inspiring keynote address from our guest speaker.' },
+  { time: '11:05 - 11:45 AM', title: 'Morning Mini Games', desc: 'Fun team-building activities & squad challenges.' },
+  { time: '11:45 - 12:00 PM', title: 'IEEE IAS Membership Dev Session', desc: 'Insights on IEEE IAS membership benefits & career growth.' },
+  { time: '12:00 - 12:30 PM', title: 'Comedian Session', desc: 'Live entertainment & comedy session.' },
+  { time: '12:30 - 01:10 PM', title: 'Squad Challenge Games', desc: 'Interactive team games and challenges.' },
+  { time: '01:10 - 02:00 PM', title: 'Lunch Break', desc: 'Ration break, lunch, and networking.' },
+  { time: '02:00 - 02:15 PM', title: 'IEEE IAS Anniversary Celebration', desc: 'Special celebration for IEEE IAS anniversary.' },
+  { time: '02:15 - 03:15 PM', title: 'Afternoon Game Sessions', desc: 'Interactive team games and squad competitions.' },
+  { time: '03:15 - 03:30 PM', title: 'IEEE IAS SL Chair\'s Address', desc: 'Keynote address from IEEE IAS Sri Lanka Chapter Chair.' },
+  { time: '03:30 - 04:30 PM', title: 'Final Challenge Games', desc: 'High-energy team games and final game rounds.' },
+  { time: '04:30 - 05:00 PM', title: 'Prize Ceremony & Closing', desc: 'Awards presentation, vote of thanks & official closing.' },
 ];
 
 const speakers = [
@@ -34,7 +40,7 @@ export default function About() {
           <MapPin className="text-marker" size={22} /> SLIIT Campus, Malabe
         </div>
         <div className="flex items-center gap-2 font-hand text-xl">
-          <Clock className="text-marker" size={22} /> Oct 13, 2026 · 09:00 onward
+          <Clock className="text-marker" size={22} /> Oct 12, 2026 · 10:00 AM onward
         </div>
       </div>
 

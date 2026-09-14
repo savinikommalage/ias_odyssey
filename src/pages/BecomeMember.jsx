@@ -127,8 +127,8 @@ export default function BecomeMember() {
             className="max-w-xs mx-auto w-full"
           />
           <Polaroid
-            img="/assets/ieee/leadspring2_bw.jpg"
-            caption="Student Leadership &amp; Community Frontline"
+            img="/assets/ieee/leadspring_bw.jpg"
+            caption="Chapter Expedition · LeadSpring '25"
             rotate="rotate-2"
             aspect="aspect-[3/4]"
             className="max-w-xs mx-auto w-full"

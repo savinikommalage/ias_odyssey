@@ -1,5 +1,6 @@
 -- ============================================================
 -- Supabase Setup Script for Odyssey Registration System
+-- SECURE CONFIGURATION — Last updated: 2026-09-14
 -- Run this in your Supabase SQL Editor (https://supabase.com/dashboard)
 -- ============================================================
 
@@ -23,35 +24,35 @@ CREATE TABLE IF NOT EXISTS public.registrations (
 -- 2. Enable Row Level Security (RLS)
 ALTER TABLE public.registrations ENABLE ROW LEVEL SECURITY;
 
--- 3. Create RLS policies for registrations table
--- Allow anyone (anonymous users) to insert a registration
-CREATE POLICY "Allow public insert to registrations" 
-ON public.registrations 
-FOR INSERT 
-TO public 
+-- 3. RLS Policies for registrations table
+-- Allow anonymous users to INSERT a registration (required for the public form)
+CREATE POLICY "Allow public insert to registrations"
+ON public.registrations
+FOR INSERT
+TO public
 WITH CHECK (true);
 
--- Allow public to select registrations (optional, restrict if needed)
-CREATE POLICY "Allow public select registrations" 
-ON public.registrations 
-FOR SELECT 
-TO public 
-USING (true);
+-- SECURITY: No public SELECT policy.
+-- Anonymous users CANNOT read, list, or export registration data.
+-- Admins access data via Supabase Dashboard or service-role key (server-side only).
 
--- 4. Create Storage Bucket for ID proof uploads
-INSERT INTO storage.buckets (id, name, public) 
-VALUES ('id-proofs', 'id-proofs', true)
+-- SECURITY: No public UPDATE or DELETE policies.
+-- Anonymous users CANNOT modify or remove registrations.
+
+-- 4. Create PRIVATE Storage Bucket for ID proof uploads
+-- IMPORTANT: public = false — files are NOT publicly accessible via URL
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('id-proofs', 'id-proofs', false)
 ON CONFLICT (id) DO NOTHING;
 
 -- 5. Storage Policies for 'id-proofs' bucket
-CREATE POLICY "Public Read Access for ID Proofs" 
-ON storage.objects 
-FOR SELECT 
-TO public 
-USING (bucket_id = 'id-proofs');
-
-CREATE POLICY "Public Upload Access for ID Proofs" 
-ON storage.objects 
-FOR INSERT 
-TO public 
+-- Allow anonymous users to UPLOAD ID proofs (required for the registration form)
+CREATE POLICY "Allow public upload to id-proofs"
+ON storage.objects
+FOR INSERT
+TO public
 WITH CHECK (bucket_id = 'id-proofs');
+
+-- SECURITY: No public SELECT/read policy on storage.objects for 'id-proofs'.
+-- Anonymous users CANNOT list, download, or browse uploaded ID proofs.
+-- Admins access files via the Supabase Dashboard Storage browser.

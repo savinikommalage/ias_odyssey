@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, X, Send } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import planeImg from '../assets/logo/Just_the_plane_4-removebg-preview (1).png';
 
 const links = [
   { to: '/', label: 'Home' },
@@ -8,6 +9,7 @@ const links = [
   { to: '/membership', label: 'Join IAS' },
   { to: '/register', label: 'Register' },
   { to: '/games', label: 'Games' },
+  { to: '/contact', label: 'Contact Us' },
 ];
 
 export default function Navbar() {
@@ -17,10 +19,10 @@ export default function Navbar() {
     <header className="relative z-40 w-full">
       <nav className="max-w-6xl w-full mx-auto flex items-center justify-between px-6 sm:px-10 pt-6">
         <NavLink to="/" className="flex items-center gap-2 group">
-          <Send
-            size={28}
-            className="text-marker -rotate-12 group-hover:-rotate-45 transition-transform duration-300"
-            strokeWidth={2.5}
+          <img
+            src={planeImg}
+            alt="Paper plane"
+            className="w-8 h-8 sm:w-9 sm:h-9 object-contain -rotate-12 group-hover:-rotate-45 transition-transform duration-300"
           />
           <span className="font-heading font-extrabold text-2xl tracking-tight text-ink">
             ODYSSEY

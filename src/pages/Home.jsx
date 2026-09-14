@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Send, Sparkles, PenLine, Camera } from 'lucide-react';
+import planeImg from '../assets/logo/Just_the_plane_4-removebg-preview (1).png';
+import ocImg from '../assets/pic/WhatsApp Image 2026-09-14 at 21.15.58.jpeg';
 import Countdown from '../components/Countdown.jsx';
 import { StickerButton, SectionTab, Polaroid, DashedDivider } from '../components/UI.jsx';
 
@@ -56,8 +58,8 @@ export default function Home() {
             className="w-full max-w-sm"
           >
             <Polaroid
-              img="/assets/ieee/leadspring_bw.jpg"
-              caption="Chapter Expedition · LeadSpring '25"
+              img={ocImg}
+              caption="Odyssey OC 2026"
               rotate="rotate-[2deg]"
               aspect="aspect-[4/3]"
               className="w-full"
@@ -69,7 +71,7 @@ export default function Home() {
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             className="absolute -top-10 -right-6 z-10 pointer-events-none"
           >
-            <Send size={80} className="text-marker drop-shadow-[2px_2px_0_#222]" strokeWidth={2} />
+            <img src={planeImg} alt="Paper plane" className="w-24 sm:w-32 h-auto object-contain drop-shadow-[2px_2px_0_#222]" />
           </motion.div>
 
           {/* Easter egg: click the doodle star tucked in the corner */}

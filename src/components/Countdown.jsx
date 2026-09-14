@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 // Set the real Odyssey event date/time here (Sri Lanka Time: UTC+05:30).
-export const EVENT_DATE = new Date('2026-10-13T09:00:00+05:30');
+export const EVENT_DATE = new Date('2026-10-12T10:00:00+05:30');
 
 function getTimeLeft(target) {
   const diff = Math.max(0, target.getTime() - Date.now());
