@@ -10,6 +10,11 @@ export default {
         olive: '#558203',
         gray: '#A6A6A6',
         marker: '#558203',
+        maroon: '#800000',
+        'maroon-dark': '#5c0000',
+        cream: '#fdfbf7',
+        'rule-blue': '#82abc4',
+        'red-accent': '#c0392b',
         ias: {
           blue: '#00629a',
           green: '#00964d',
@@ -19,6 +24,8 @@ export default {
         heading: ['Poppins', 'Montserrat', 'sans-serif'],
         hand: ['Kalam', 'Caveat', 'cursive'],
         marker: ['"Permanent Marker"', 'cursive'],
+        outfit: ['Outfit', 'sans-serif'],
+        special: ['"Special Elite"', 'cursive'],
       },
       backgroundImage: {
         notebook:
