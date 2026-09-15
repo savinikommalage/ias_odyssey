@@ -1,11 +1,12 @@
 import React from 'react';
-import { Phone, Mail, Handshake, Sparkles } from 'lucide-react';
+import { Phone, Mail, Handshake, Sparkles, User } from 'lucide-react';
 import { SectionTab, DashedDivider } from '../components/UI.jsx';
 import sadurshanImg from '../assets/pic/Sadurshan Sugumar.jpeg';
 import irushiImg from '../assets/pic/Irushi Umanda.jpeg';
 import chanumiImg from '../assets/pic/Chanumi Yavindi.jpeg';
 import rumanaImg from '../assets/pic/Rumana Azmi.jpg.jpeg';
 import sahnasImg from '../assets/pic/IMG_4675.JPG.jpeg';
+import chameeshaImg from '../assets/pic/Chameesha Pahan.jpeg';
 
 export default function Contact() {
   const contacts = [
@@ -15,6 +16,7 @@ export default function Contact() {
       rawPhone: '0774788857',
       email: 'sugumarsadurshan@gmail.com',
       img: sadurshanImg,
+      imgClass: 'w-full h-full object-contain scale-[1.24] object-top',
     },
     {
       name: 'Irushi Umanda',
@@ -22,6 +24,7 @@ export default function Contact() {
       rawPhone: '0715815835',
       email: 'irushiumanda3@gmail.com',
       img: irushiImg,
+      imgClass: 'w-full h-full object-contain scale-[1.24] object-top',
     },
     {
       name: 'Chanumi Yavindi',
@@ -29,6 +32,7 @@ export default function Contact() {
       rawPhone: '0701920213',
       email: 'mahawaththachanumi@gmail.com',
       img: chanumiImg,
+      imgClass: 'w-full h-full object-cover object-center',
     },
   ];
 
@@ -39,6 +43,7 @@ export default function Contact() {
       phone: '071 594 6052',
       rawPhone: '0715946052',
       img: rumanaImg,
+      imgClass: 'w-full h-full object-contain scale-[1.26] object-top',
     },
     {
       name: 'Sahnas Thufail',
@@ -46,6 +51,15 @@ export default function Contact() {
       phone: '071 663 3585',
       rawPhone: '0716633585',
       img: sahnasImg,
+      imgClass: 'w-full h-full object-contain scale-[1.26] object-top',
+    },
+    {
+      name: 'Chameesha Pahan',
+      role: 'Finance Lead',
+      phone: '071 263 9243',
+      rawPhone: '0712639243',
+      img: chameeshaImg,
+      imgClass: 'w-full h-full object-cover object-[center_52%]',
     },
   ];
 
@@ -70,12 +84,33 @@ export default function Contact() {
               className="bg-white border-2 border-black p-5 rounded-2xl shadow-[6px_6px_0_#222] hover:-translate-y-1 transition-transform relative flex flex-col items-center text-center"
             >
               {/* Photo Frame with Black & White styling */}
-              <div className="w-full h-64 overflow-hidden rounded-tl-2xl rounded-tr-sm rounded-bl-sm rounded-br-[45px] border-2 border-[#558203] bg-gray-100 mb-4 shadow-inner relative">
-                <img
-                  src={c.img}
-                  alt={c.name}
-                  className="w-full h-full object-cover grayscale brightness-105 hover:grayscale-0 transition-all duration-300"
-                />
+              <div className="w-full h-48 overflow-hidden rounded-tl-2xl rounded-tr-sm rounded-bl-sm rounded-br-[45px] border-2 border-[#558203] bg-gray-100 mb-4 shadow-inner relative flex items-center justify-center">
+                {c.img ? (
+                  <>
+                    <img
+                      src={c.img}
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute inset-0 w-full h-full object-cover blur-sm opacity-25 scale-110 pointer-events-none"
+                    />
+                    <img
+                      src={c.img}
+                      alt={c.name}
+                      className={`relative z-10 grayscale brightness-105 hover:grayscale-0 transition-all duration-300 ${
+                        c.imgClass || 'w-full h-full object-contain scale-[1.24] object-top'
+                      }`}
+                    />
+                  </>
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-[#f5f8f0] border border-dashed border-[#558203]/40 p-4">
+                    <div className="w-14 h-14 rounded-full bg-[#558203]/10 border-2 border-dashed border-[#558203]/50 flex items-center justify-center mb-1.5">
+                      <User size={28} className="text-[#558203]/60" />
+                    </div>
+                    <span className="font-hand font-bold text-xs uppercase tracking-wider text-ink/60">
+                      Photo Coming Soon
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Contact Information */}
@@ -117,7 +152,7 @@ export default function Contact() {
         <div className="flex items-center gap-2 mb-2">
           <Handshake size={20} className="text-[#558203]" />
           <span className="bg-[#558203] text-white font-hand font-bold text-xs tracking-wider uppercase px-3 py-1 rounded-md shadow-[2px_2px_0_#3a5802]">
-            Partnerships & Sponsorships
+            Partnerships &amp; Sponsorships
           </span>
         </div>
 
@@ -150,19 +185,40 @@ export default function Contact() {
         </p>
 
         {/* Partnership Contact Cards */}
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl">
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-8 w-full">
           {partnershipContacts.map((c) => (
             <div
               key={c.name}
               className="bg-white border-2 border-[#558203] p-5 rounded-2xl shadow-[6px_6px_0_#3a5802] hover:-translate-y-1 transition-transform relative flex flex-col items-center text-center"
             >
               {/* Photo Frame with Black & White styling */}
-              <div className="w-full h-64 overflow-hidden rounded-tl-2xl rounded-tr-sm rounded-bl-sm rounded-br-[45px] border-2 border-[#558203] bg-gray-100 mb-4 shadow-inner relative">
-                <img
-                  src={c.img}
-                  alt={c.name}
-                  className="w-full h-full object-cover grayscale brightness-105 hover:grayscale-0 transition-all duration-300"
-                />
+              <div className="w-full h-48 overflow-hidden rounded-tl-2xl rounded-tr-sm rounded-bl-sm rounded-br-[45px] border-2 border-[#558203] bg-gray-100 mb-4 shadow-inner relative flex items-center justify-center">
+                {c.img ? (
+                  <>
+                    <img
+                      src={c.img}
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute inset-0 w-full h-full object-cover blur-sm opacity-25 scale-110 pointer-events-none"
+                    />
+                    <img
+                      src={c.img}
+                      alt={c.name}
+                      className={`relative z-10 grayscale brightness-105 hover:grayscale-0 transition-all duration-300 ${
+                        c.imgClass || 'w-full h-full object-contain scale-[1.26] object-top'
+                      }`}
+                    />
+                  </>
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-[#f5f8f0] border border-dashed border-[#558203]/40 p-4">
+                    <div className="w-14 h-14 rounded-full bg-[#558203]/10 border-2 border-dashed border-[#558203]/50 flex items-center justify-center mb-1.5">
+                      <User size={28} className="text-[#558203]/60" />
+                    </div>
+                    <span className="font-hand font-bold text-xs uppercase tracking-wider text-ink/60">
+                      Photo Coming Soon
+                    </span>
+                  </div>
+                )}
               </div>
 
               <h3 className="font-heading font-black text-xl sm:text-2xl text-ink tracking-tight">

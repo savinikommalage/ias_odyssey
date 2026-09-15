@@ -1,6 +1,7 @@
 import React from 'react';
-import { MapPin, Clock, User } from 'lucide-react';
+import { MapPin, Clock } from 'lucide-react';
 import { SectionTab, Polaroid, DashedDivider } from '../components/UI.jsx';
+import GuessTheGuest from '../components/GuessTheGuest.jsx';
 
 const schedule = [
   { time: '10:00 - 10:35 AM', title: 'Welcome & Icebreaker', desc: 'Welcome address and opening icebreaker activity.' },
@@ -89,8 +90,21 @@ export default function About() {
       </h2>
       <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
         {speakers.map((s, i) => (
-          <Polaroid key={i} caption={s.name} rotate={i % 2 ? 'rotate-2' : '-rotate-2'}>
-            <User size={48} className="text-ink/30" />
+          <Polaroid
+            key={i}
+            caption={
+              <span>
+                <span className="block">{s.name}</span>
+                {s.role && (
+                  <span className="block font-marker text-xs sm:text-sm text-marker font-normal tracking-wide mt-0.5">
+                    {s.role}
+                  </span>
+                )}
+              </span>
+            }
+            rotate={i % 2 ? 'rotate-2' : '-rotate-2'}
+          >
+            <GuessTheGuest variant={i} />
           </Polaroid>
         ))}
       </div>
