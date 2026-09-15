@@ -113,13 +113,34 @@ export default function Register() {
 
             <div className="mt-6 bg-[#fff8b9] p-6 border-2 border-dashed border-ink text-center font-hand text-ink">
               <p className="text-xl font-extrabold mb-3">Join the Odyssey WhatsApp Group</p>
-              <p className="text-base italic text-ink/80 mb-4">Scan the QR code below to stay updated with event details, squad updates, and more!</p>
-              <div className="inline-block bg-white p-3 border-2 border-black rounded-lg shadow-[4px_4px_0_#222]">
-                <img
-                  src={whatsappQr}
-                  alt="Odyssey WhatsApp Group QR Code"
-                  className="w-48 h-48 sm:w-56 sm:h-56 object-contain"
-                />
+              <p className="text-base italic text-ink/80 mb-4">
+                Scan the QR code below or tap the button to stay updated with event details, squad updates, and announcements!
+              </p>
+              <div className="inline-block bg-white p-3 border-2 border-black rounded-lg shadow-[4px_4px_0_#222] hover:scale-[1.02] transition-transform">
+                <a
+                  href="https://chat.whatsapp.com/ERspG6uaZhgB7Nst6tzD47"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  title="Click to Join WhatsApp Group"
+                >
+                  <img
+                    src={whatsappQr}
+                    alt="Odyssey WhatsApp Group QR Code"
+                    className="w-48 h-48 sm:w-56 sm:h-56 object-contain"
+                  />
+                </a>
+              </div>
+
+              <div className="mt-5">
+                <a
+                  href="https://chat.whatsapp.com/ERspG6uaZhgB7Nst6tzD47"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-heading font-black text-lg py-2.5 px-6 rounded-full border-2 border-black shadow-[3px_3px_0_#000] hover:bg-[#20ba59] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all uppercase tracking-wide"
+                >
+                  <span>💬 Join WhatsApp Group</span>
+                </a>
               </div>
             </div>
 
@@ -562,17 +583,6 @@ export default function Register() {
               )}
             </button>
           </div>
-
-          {/* Bottom Footer Links */}
-          <div className="flex items-center justify-between pt-2 text-sm sm:text-base font-hand text-ink/80 italic">
-            <a href="#" className="underline hover:text-ink">
-              Forgot password?
-            </a>
-            <a href="#" className="underline hover:text-ink">
-              Need an invite code?
-            </a>
-          </div>
-
         </form>
       </div>
     </div>

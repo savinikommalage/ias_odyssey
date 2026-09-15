@@ -242,8 +242,18 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* ===== OFFICIAL EVENT EMAIL ===== */}
-      <div className="mt-10 flex justify-center">
+      {/* ===== OFFICIAL EVENT CHANNELS ===== */}
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="https://chat.whatsapp.com/ERspG6uaZhgB7Nst6tzD47"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 font-hand text-base sm:text-lg text-ink/90 hover:text-white bg-[#25D366]/25 hover:bg-[#25D366] px-5 py-3 rounded-full border-2 border-black shadow-[4px_4px_0_#222] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all"
+        >
+          <span className="text-xl">💬</span>
+          <span className="font-bold">Join WhatsApp Group</span>
+        </a>
+
         <a
           href="mailto:ieee.iasodyssey@gmail.com"
           className="inline-flex items-center gap-2 font-hand text-base sm:text-lg text-ink/90 hover:text-[#558203] bg-[#fffdf0] px-5 py-3 rounded-full border-2 border-black shadow-[4px_4px_0_#222] transition-colors"

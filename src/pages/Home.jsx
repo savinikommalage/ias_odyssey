@@ -92,9 +92,7 @@ export default function Home() {
           className="mt-10 ink-border bg-white/80 p-5 rounded-lg max-w-md rotate-[-1deg] shadow-[4px_4px_0_#222222]"
         >
           <p className="font-hand text-xl flex items-center gap-2">
-            <PenLine size={20} className="text-marker" /> Margin note found! Use
-            code <span className="font-marker text-marker">FIRSTPAGE</span> for
-            an early-bird referral boost on the Register page.
+            <PenLine size={20} className="text-marker shrink-0" /> Margin note found! "Every great odyssey begins with a single paper airplane. See you at SLIIT!"
           </p>
         </motion.div>
       )}
