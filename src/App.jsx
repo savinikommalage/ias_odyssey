@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import NotebookBackground from './components/NotebookBackground.jsx';
 import Navbar from './components/Navbar.jsx';
 import Home from './pages/Home.jsx';
@@ -29,6 +30,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }
