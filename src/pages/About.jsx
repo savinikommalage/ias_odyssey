@@ -1,11 +1,17 @@
 import React from 'react';
-import { MapPin, Clock } from 'lucide-react';
+import { MapPin, Clock, Sparkles } from 'lucide-react';
 import { SectionTab, Polaroid, DashedDivider } from '../components/UI.jsx';
 import GuessTheGuest from '../components/GuessTheGuest.jsx';
+import KeynoteRevealCard from '../components/KeynoteRevealCard.jsx';
 
 const schedule = [
   { time: '10:00 - 10:35 AM', title: 'Welcome & Icebreaker', desc: 'Welcome address and opening icebreaker activity.' },
-  { time: '10:35 - 11:05 AM', title: 'Guest Speaker Session', desc: 'Inspiring keynote address from our guest speaker.' },
+  {
+    time: '10:35 - 11:05 AM',
+    title: 'Keynote Address: Work-Life & Student Balance',
+    desc: 'Session by Jayantha Fernando (Managing Director, Coaching Consortium International) — How to balance work life and student life while having fun.',
+    highlight: true,
+  },
   { time: '11:05 - 11:45 AM', title: 'Morning Mini Games', desc: 'Fun team-building activities & squad challenges.' },
   { time: '11:45 - 12:00 PM', title: 'IEEE IAS Membership Dev Session', desc: 'Insights on IEEE IAS membership benefits & career growth.' },
   { time: '12:00 - 12:30 PM', title: 'Comedian Session', desc: 'Live entertainment & comedy session.' },
@@ -18,8 +24,7 @@ const schedule = [
   { time: '04:30 - 05:00 PM', title: 'Prize Ceremony & Closing', desc: 'Awards presentation, vote of thanks & official closing.' },
 ];
 
-const speakers = [
-  { name: 'To Be Announced', role: 'Keynote Speaker' },
+const mysterySpeakers = [
   { name: 'To Be Announced', role: 'Workshop Lead' },
   { name: 'To Be Announced', role: 'IAS Guest' },
 ];
@@ -56,9 +61,20 @@ export default function About() {
         <div className="relative border-l-2 border-dashed border-marker/60 ml-3 space-y-8">
           {schedule.map((s, i) => (
             <div key={i} className="pl-8 relative">
-              <span className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-marker ink-border" />
+              <span
+                className={`absolute -left-[9px] top-1 w-4 h-4 rounded-full ${
+                  s.highlight ? 'bg-red-600 ring-4 ring-red-200' : 'bg-marker'
+                } ink-border`}
+              />
               <p className="font-marker text-marker text-sm">{s.time}</p>
-              <h3 className="font-heading font-bold text-xl text-ink">{s.title}</h3>
+              <h3 className="font-heading font-bold text-xl text-ink flex flex-wrap items-center gap-2">
+                {s.title}
+                {s.highlight && (
+                  <span className="font-heading text-[10px] uppercase font-black bg-red-600 text-paper px-2 py-0.5 rounded tracking-wider shadow-[1px_1px_0_#222]">
+                    Keynote
+                  </span>
+                )}
+              </h3>
               <p className="font-hand text-lg text-ink/80">{s.desc}</p>
             </div>
           ))}
@@ -85,13 +101,30 @@ export default function About() {
 
       <DashedDivider />
 
-      <h2 className="font-heading font-extrabold text-3xl text-ink mb-6">
-        Field Guides (Speakers)
-      </h2>
-      <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
-        {speakers.map((s, i) => (
+      {/* Field Guides Section with Keynote Reveal */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+        <div>
+          <h2 className="font-heading font-extrabold text-3xl text-ink">
+            Field Guides (Speakers)
+          </h2>
+          <p className="font-hand text-xl text-ink/80">
+            Meet the leaders charting the course through your Odyssey journey.
+          </p>
+        </div>
+        <div className="inline-flex items-center gap-1.5 font-marker text-xs sm:text-sm bg-red-600 text-paper px-3 py-1 rounded ink-border shadow-[2px_2px_0_#222] -rotate-1 self-start sm:self-auto">
+          <Sparkles size={14} /> Keynote Revealed!
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-3 gap-6 sm:gap-8 items-start">
+        {/* Revealed Keynote Speaker Card */}
+        <KeynoteRevealCard />
+
+        {/* Mystery Speakers (Variants 1 and 2) */}
+        {mysterySpeakers.map((s, i) => (
           <Polaroid
             key={i}
+            aspect="aspect-square"
             caption={
               <span>
                 <span className="block">{s.name}</span>
@@ -100,11 +133,14 @@ export default function About() {
                     {s.role}
                   </span>
                 )}
+                <span className="inline-block mt-2 font-heading font-bold text-[10px] uppercase tracking-wider text-ink/60 bg-paper px-2 py-0.5 rounded border border-ink/20">
+                  CLASSIFIED // TBA
+                </span>
               </span>
             }
-            rotate={i % 2 ? 'rotate-2' : '-rotate-2'}
+            rotate={i % 2 === 0 ? 'rotate-2' : '-rotate-2'}
           >
-            <GuessTheGuest variant={i} />
+            <GuessTheGuest variant={i + 1} />
           </Polaroid>
         ))}
       </div>

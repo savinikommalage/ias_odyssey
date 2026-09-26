@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Send, Sparkles, PenLine, Camera } from 'lucide-react';
+import { Send, Sparkles, PenLine, Camera, Flame } from 'lucide-react';
 import planeImg from '../assets/logo/Just_the_plane_4-removebg-preview (1).png';
 import ocImg from '../assets/pic/WhatsApp Image 2026-09-14 at 21.15.58.jpeg';
 import Countdown from '../components/Countdown.jsx';
-import { StickerButton, SectionTab, Polaroid, DashedDivider } from '../components/UI.jsx';
+import { StickerButton, SectionTab, Polaroid, DashedDivider, Tape } from '../components/UI.jsx';
 
 export default function Home() {
   const [foundEgg, setFoundEgg] = useState(false);
@@ -28,6 +28,34 @@ export default function Home() {
             An IEEE IAS survival story: alliances, referrals, and one very
             important paper airplane. Turn the page to begin your entry.
           </p>
+
+          {/* Urgent Announcement Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.45 }}
+            className="mt-6 relative bg-white/95 ink-border p-3.5 sm:p-4 rounded-lg shadow-[4px_4px_0_#222] rotate-[-0.8deg] max-w-xl group hover:rotate-0 transition-transform"
+          >
+            <Tape className="-top-3 left-6 -rotate-6 w-14 h-5 opacity-90" />
+            <div className="flex items-start sm:items-center gap-3">
+              <div className="bg-red-500/10 text-red-600 p-2 rounded-md border border-red-500/20 shrink-0 mt-0.5 sm:mt-0 animate-pulse">
+                <Flame size={22} className="fill-red-500/30" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-heading font-black text-xs uppercase tracking-wider bg-red-600 text-paper px-2 py-0.5 rounded shadow-[1px_1px_0_#222]">
+                    Spots Filling Up!
+                  </span>
+                  <span className="font-marker text-xs text-marker">
+                    ⚡ Register Soon
+                  </span>
+                </div>
+                <p className="font-hand text-lg sm:text-xl text-ink leading-snug mt-1 font-bold">
+                  Don’t miss the chance to find your community, join IEEE, and make memories.
+                </p>
+              </div>
+            </div>
+          </motion.div>
 
           <div className="mt-8">
             <p className="font-marker text-marker text-sm mb-2 rotate-[-1deg]">
