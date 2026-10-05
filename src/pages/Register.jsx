@@ -3,6 +3,8 @@ import { uploadIdProof, submitRegistration } from '../lib/supabaseClient';
 import { CheckCircle2, Loader2, AlertCircle, ArrowLeft, Sparkles, ExternalLink, Users, ShieldCheck, Send } from 'lucide-react';
 import whatsappQr from '../assets/pic/qrcode_chat.whatsapp.com.png';
 
+const REGISTRATION_CLOSED = true;
+
 export default function Register() {
   // Form fields state matching the screenshot & Supabase backend
   const [fullName, setFullName] = useState('');
@@ -253,7 +255,7 @@ export default function Register() {
                 }}
                 className="bg-[#558203] text-white font-heading font-black text-lg sm:text-xl px-7 py-3 border-2 border-black shadow-[4px_4px_0_#000] hover:bg-[#466c02] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all uppercase tracking-wider inline-flex items-center gap-3 rounded-md cursor-pointer"
               >
-                Register Now <Send size={20} className="rotate-45" />
+                {REGISTRATION_CLOSED ? 'Registrations Closed' : 'Register Now'} <Send size={20} className="rotate-45" />
               </button>
             </div>
 
@@ -313,6 +315,48 @@ export default function Register() {
       </div>
 
       {/* ===== REGISTRATION FORM JOURNAL CARD ===== */}
+      {REGISTRATION_CLOSED ? (
+        <div id="register-form" className="w-full max-w-[700px] bg-[#fff6a4] border-2 border-black p-6 sm:p-10 shadow-[8px_8px_0_#222] relative rounded-sm">
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-7 bg-gray-300/70 transform -rotate-3 shadow-sm pointer-events-none" />
+
+          <div className="mb-6 flex justify-start">
+            <div className="w-full border-2 border-black bg-white/80 rounded-full py-1.5 px-4 sm:px-6 font-hand text-base sm:text-lg text-ink flex items-center gap-2 shadow-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-600 inline-block animate-pulse" />
+              <span className="italic font-medium">Odyssey Access</span>
+            </div>
+          </div>
+
+          <span className="font-heading font-black text-xs sm:text-sm uppercase tracking-wider bg-red-600 text-white px-3 py-1 rounded shadow-[2px_2px_0_#222] inline-block rotate-[-1.5deg]">
+            Registrations Closed
+          </span>
+
+          <h1 className="font-heading font-black text-3xl sm:text-4xl text-ink tracking-tight leading-tight mt-4">
+            Registrations are officially CLOSED… BUT 👀
+          </h1>
+
+          <p className="font-hand text-xl sm:text-2xl text-ink/90 italic leading-relaxed mt-4">
+            We might still have a few spots left! 🤭✨ Missed out? Or got a friend who’s still trying to make it?
+          </p>
+
+          <div className="bg-[#fffdf0] border-2 border-black rounded-xl p-5 sm:p-6 shadow-[6px_6px_0_#000] mt-6">
+            <p className="font-hand text-lg sm:text-xl text-ink leading-relaxed">
+              DM us <strong className="font-heading text-[#558203]">“ODYSSEY”</strong> + your contact number and we’ll see what we can do! 💚
+            </p>
+            <a
+              href="https://wa.me/94778419717?text=ODYSSEY"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 bg-[#558203] text-white font-heading font-black text-lg px-6 py-3 border-2 border-black shadow-[4px_4px_0_#000] hover:bg-[#466c02] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all uppercase tracking-wider inline-flex items-center gap-3 rounded-md"
+            >
+              Mahira · 077 841 9717 <ExternalLink size={18} />
+            </a>
+          </div>
+
+          <p className="font-marker text-marker text-sm sm:text-base mt-6 rotate-[-1deg]">
+            No promises… but hey, it’s worth a shot 👀
+          </p>
+        </div>
+      ) : (
       <div id="register-form" className="w-full max-w-[700px] bg-[#fff6a4] border-2 border-black p-6 sm:p-10 shadow-[8px_8px_0_#222] relative rounded-sm">
         
         {/* Top Status Pill Bar */}
@@ -585,6 +629,7 @@ export default function Register() {
           </div>
         </form>
       </div>
+      )}
     </div>
   );
 }

@@ -44,10 +44,10 @@ export default function Home() {
               <div className="flex-1">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="font-heading font-black text-xs uppercase tracking-wider bg-red-600 text-paper px-2 py-0.5 rounded shadow-[1px_1px_0_#222]">
-                    Spots Filling Up!
+                    Registrations Closed
                   </span>
                   <span className="font-marker text-xs text-marker">
-                    ⚡ Register Soon
+                    👀 A few spots may remain
                   </span>
                 </div>
                 <p className="font-hand text-lg sm:text-xl text-ink leading-snug mt-1 font-bold">
@@ -66,7 +66,7 @@ export default function Home() {
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <StickerButton as={Link} to="/register">
-              Register Now <Send size={18} />
+              Missed Out? <Send size={18} />
             </StickerButton>
             <Link
               to="/about"
