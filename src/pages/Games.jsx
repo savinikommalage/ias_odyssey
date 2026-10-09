@@ -117,11 +117,16 @@ const gamesList = [
 ];
 
 const leaderboard = [
-  { rank: 1, name: 'Team Voltage', points: 1420 },
-  { rank: 2, name: 'Circuit Breakers', points: 1305 },
-  { rank: 3, name: 'The Alliance', points: 1180 },
-  { rank: 4, name: 'Squad Odyssey', points: 990 },
-  { rank: 5, name: 'IAS Insurgents', points: 875 },
+  { rank: 1, name: 'The Wildcards', points: 10 },
+  { rank: 2, name: 'Phantoms', points: 10 },
+  { rank: 3, name: 'Rootkidz', points: 0 },
+  { rank: 4, name: 'Mission: possible-ish', points: 10 },
+  { rank: 5, name: 'The Fifth Tide', points: 10 },
+  { rank: 6, name: 'Future Forge', points: 0 },
+  { rank: 7, name: 'Prometheus', points: 0 },
+  { rank: 8, name: 'Divergents', points: 0 },
+  { rank: 9, name: 'Shenanigans', points: 0 },
+  { rank: 10, name: 'Pirates of the Pittugala', points: 10 },
 ];
 
 const medalColor = ['text-yellow-500', 'text-gray-400', 'text-amber-700'];
