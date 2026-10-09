@@ -116,18 +116,26 @@ const gamesList = [
   },
 ];
 
-const leaderboard = [
-  { rank: 1, name: 'The Wildcards', points: 10 },
-  { rank: 2, name: 'Phantoms', points: 10 },
-  { rank: 3, name: 'Rootkidz', points: 0 },
-  { rank: 4, name: 'Mission: possible-ish', points: 10 },
-  { rank: 5, name: 'The Fifth Tide', points: 10 },
-  { rank: 6, name: 'Future Forge', points: 0 },
-  { rank: 7, name: 'Prometheus', points: 0 },
-  { rank: 8, name: 'Divergents', points: 10 },
-  { rank: 9, name: 'Shenanigans', points: 0 },
-  { rank: 10, name: 'Pirates of the Pittugala', points: 10 },
+const rawTeams = [
+  { id: 1, name: 'The Wildcards', points: 10 },
+  { id: 2, name: 'Phantoms', points: 10 },
+  { id: 3, name: 'Rootkidz', points: 0 },
+  { id: 4, name: 'Mission: possible-ish', points: 10 },
+  { id: 5, name: 'The Fifth Tide', points: 10 },
+  { id: 6, name: 'Future Forge', points: 0 },
+  { id: 7, name: 'Prometheus', points: 0 },
+  { id: 8, name: 'Divergents', points: 10 },
+  { id: 9, name: 'Shenanigans', points: 0 },
+  { id: 10, name: 'Pirates of the Pittugala', points: 10 },
 ];
+
+// Automatically sorts by highest score first, maintaining initial order on ties, and assigns rank #1 to #10
+const leaderboard = [...rawTeams]
+  .sort((a, b) => b.points - a.points || a.id - b.id)
+  .map((team, index) => ({
+    ...team,
+    rank: index + 1,
+  }));
 
 const medalColor = ['text-yellow-500', 'text-gray-400', 'text-amber-700'];
 
@@ -244,7 +252,7 @@ export default function Games() {
           <div className="bg-white/70 ink-border rounded-lg shadow-[5px_5px_0_#222222] divide-y-2 divide-dashed divide-ink/20">
             {leaderboard.map((t) => (
               <div
-                key={t.rank}
+                key={t.id}
                 className="flex items-center justify-between px-5 py-3"
               >
                 <div className="flex items-center gap-4">
