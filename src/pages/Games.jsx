@@ -124,7 +124,7 @@ const leaderboard = [
   { rank: 5, name: 'The Fifth Tide', points: 10 },
   { rank: 6, name: 'Future Forge', points: 0 },
   { rank: 7, name: 'Prometheus', points: 0 },
-  { rank: 8, name: 'Divergents', points: 0 },
+  { rank: 8, name: 'Divergents', points: 10 },
   { rank: 9, name: 'Shenanigans', points: 0 },
   { rank: 10, name: 'Pirates of the Pittugala', points: 10 },
 ];
