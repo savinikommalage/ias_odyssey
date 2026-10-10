@@ -116,14 +116,14 @@ const gamesList = [
   },
 ];
 
-const rawTeams = [
+const rawTeams = [// <-- change points here
   { id: 1, name: 'The Wildcards', points: 10 },
   { id: 2, name: 'Phantoms', points: 10 },
   { id: 3, name: 'Rootkidz', points: 0 },
   { id: 4, name: 'Mission: possible-ish', points: 10 },
   { id: 5, name: 'The Fifth Tide', points: 10 },
   { id: 6, name: 'Future Forge', points: 0 },
-  { id: 7, name: 'Prometheus', points: 0 },
+  { id: 7, name: 'Prometheus', points: 10 },
   { id: 8, name: 'Divergents', points: 10 },
   { id: 9, name: 'Shenanigans', points: 0 },
   { id: 10, name: 'Pirates of the Pittugala', points: 10 },
@@ -186,9 +186,8 @@ export default function Games() {
         {filteredGames.map((game, i) => (
           <div
             key={game.id}
-            className={`relative bg-white/80 ink-border rounded-xl p-6 sm:p-7 shadow-[5px_5px_0_#222222] transition-transform hover:-translate-y-1 ${
-              i % 2 === 0 ? 'rotate-[-0.5deg]' : 'rotate-[0.5deg]'
-            }`}
+            className={`relative bg-white/80 ink-border rounded-xl p-6 sm:p-7 shadow-[5px_5px_0_#222222] transition-transform hover:-translate-y-1 ${i % 2 === 0 ? 'rotate-[-0.5deg]' : 'rotate-[0.5deg]'
+              }`}
           >
             {/* Number Tag */}
             <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-marker ink-border flex items-center justify-center font-heading font-black text-paper text-lg rotate-[-4deg] shadow-[2px_2px_0_#222]">
@@ -257,9 +256,8 @@ export default function Games() {
               >
                 <div className="flex items-center gap-4">
                   <span
-                    className={`font-heading font-black text-2xl w-8 ${
-                      medalColor[t.rank - 1] || 'text-ink/60'
-                    }`}
+                    className={`font-heading font-black text-2xl w-8 ${medalColor[t.rank - 1] || 'text-ink/60'
+                      }`}
                   >
                     #{t.rank}
                   </span>
