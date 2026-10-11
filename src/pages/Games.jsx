@@ -116,22 +116,32 @@ const gamesList = [
   },
 ];
 
-const rawTeams = [// <-- change points here
-  { id: 1, name: 'The Wildcards', points: 10 },
-  { id: 2, name: 'Phantoms', points: 10 },
-  { id: 3, name: 'Rootkidz', points: 0 },
-  { id: 4, name: 'Mission: possible-ish', points: 10 },
-  { id: 5, name: 'The Fifth Tide', points: 10 },
-  { id: 6, name: 'Future Forge', points: 10 },
-  { id: 7, name: 'Prometheus', points: 10 },
-  { id: 8, name: 'Divergents', points: 10 },
-  { id: 9, name: 'Shenanigans', points: 0 },
-  { id: 10, name: 'Pirates of the Pittugala', points: 10 },
+// Change points & scoredOrder here.
+// When points are tied, teams with lower scoredOrder (who scored earlier) rank higher.
+// When a team scores later, set their scoredOrder to the next number (e.g. 9, 10).
+const rawTeams = [
+  { id: 1, name: 'The Wildcards', points: 10, scoredOrder: 1 },
+  { id: 2, name: 'Phantoms', points: 10, scoredOrder: 2 },
+  { id: 3, name: 'Rootkidz', points: 0, scoredOrder: 9 },
+  { id: 4, name: 'Mission: possible-ish', points: 10, scoredOrder: 3 },
+  { id: 5, name: 'The Fifth Tide', points: 10, scoredOrder: 6 },
+  { id: 6, name: 'Future Forge', points: 10, scoredOrder: 8 },
+  { id: 7, name: 'Prometheus', points: 10, scoredOrder: 7 },
+  { id: 8, name: 'Divergents', points: 10, scoredOrder: 4 },
+  { id: 9, name: 'Shenanigans', points: 0, scoredOrder: 10 },
+  { id: 10, name: 'Pirates of the Pittugala', points: 10, scoredOrder: 5 },
 ];
 
-// Automatically sorts by highest score first, maintaining initial order on ties, and assigns rank #1 to #10
+// Sorts by highest score first; on ties, teams that scored earlier (lower scoredOrder) rank higher
 const leaderboard = [...rawTeams]
-  .sort((a, b) => b.points - a.points || a.id - b.id)
+  .sort((a, b) => {
+    if (b.points !== a.points) {
+      return b.points - a.points;
+    }
+    const orderA = a.scoredOrder ?? a.id;
+    const orderB = b.scoredOrder ?? b.id;
+    return orderA - orderB;
+  })
   .map((team, index) => ({
     ...team,
     rank: index + 1,
