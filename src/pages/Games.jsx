@@ -122,7 +122,7 @@ const rawTeams = [// <-- change points here
   { id: 3, name: 'Rootkidz', points: 0 },
   { id: 4, name: 'Mission: possible-ish', points: 10 },
   { id: 5, name: 'The Fifth Tide', points: 10 },
-  { id: 6, name: 'Future Forge', points: 0 },
+  { id: 6, name: 'Future Forge', points: 10 },
   { id: 7, name: 'Prometheus', points: 10 },
   { id: 8, name: 'Divergents', points: 10 },
   { id: 9, name: 'Shenanigans', points: 0 },
