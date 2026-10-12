@@ -120,16 +120,16 @@ const gamesList = [
 // When points are tied, teams with lower scoredOrder (who scored earlier) rank higher.
 // When a team scores later, set their scoredOrder to the next number (e.g. 9, 10).
 const rawTeams = [
-  { id: 1, name: 'The Wildcards', points: 50, scoredOrder: 10 },
-  { id: 2, name: 'Phantoms', points: 140, scoredOrder: 7 },
-  { id: 3, name: 'Rootkidz', points: 130, scoredOrder: 6 },
-  { id: 4, name: 'Mission: possible-ish', points: 120, scoredOrder: 2 },
-  { id: 5, name: 'The Fifth Tide', points: 140, scoredOrder: 4 },
-  { id: 6, name: 'Future Forge', points: 130, scoredOrder: 9 },
-  { id: 7, name: 'Prometheus', points: 140, scoredOrder: 5 },
-  { id: 8, name: 'Divergents', points: 100, scoredOrder: 3 },
-  { id: 9, name: 'Shenanigans', points: 70, scoredOrder: 8 },
-  { id: 10, name: 'Pirates of the Pittugala', points: 160, scoredOrder: 1 },
+  { id: 1, name: 'The Wildcards', points: 150, scoredOrder: 1 },
+  { id: 2, name: 'Phantoms', points: 220, scoredOrder: 5 },
+  { id: 3, name: 'Rootkidz', points: 220, scoredOrder: 4 },
+  { id: 4, name: 'Mission: possible-ish', points: 190, scoredOrder: 6 },
+  { id: 5, name: 'The Fifth Tide', points: 240, scoredOrder: 2 },
+  { id: 6, name: 'Future Forge', points: 160, scoredOrder: 10 },
+  { id: 7, name: 'Prometheus', points: 200, scoredOrder: 7 },
+  { id: 8, name: 'Divergents', points: 150, scoredOrder: 8 },
+  { id: 9, name: 'Shenanigans', points: 110, scoredOrder: 9 },
+  { id: 10, name: 'Pirates of the Pittugala', points: 260, scoredOrder: 3 },
 ];
 
 // Sorts by highest score first; on ties, teams that scored earlier (lower scoredOrder) rank higher
